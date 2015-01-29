@@ -1,8 +1,8 @@
-var SerialPrinterPlugin = function() {};
+var MCardReaderPlugin = function() {};
 
-SerialPrinterPlugin.prototype.doprint = function(action,args,success, fail) {
-    cordova.exec(success, fail, "SerialPrinterPlugin",action, JSON.parse(args));
+MCardReaderPlugin.prototype.doread = function(action,args,success, fail) {
+    cordova.exec(success, fail, "MCardReaderPlugin",action, JSON.parse(args));
 };
 
-var SerialPrinterPlugin = new SerialPrinterPlugin();
-module.exports = SerialPrinterPlugin;
+var MCardReaderPlugin = new MCardReaderPlugin();
+module.exports = MCardReaderPlugin;

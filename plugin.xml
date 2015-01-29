@@ -17,11 +17,11 @@
     <platform name="android">
         <config-file target="res/xml/config.xml" parent="/*">
             <feature name="MCardReaderPlugin">
-                <param name="android-package" value="com.neuralink.cordova.mcardreaderplugin.MCardReaderPlugin"/>
+                <param name="android-package" value="com.neuralink.cordova.mcardreaderplugin.MainActivity"/>
             </feature>
         </config-file>
-        <source-file src="src/android/com/neuralink/cordova/mcardreaderplugin/MCardReaderPlugin.java" target-dir="src/com/neuralink/cordova/mcardreaderplugin" />
         <source-file src="src/android/com/neuralink/cordova/mcardreaderplugin/MainActivity.java" target-dir="src/com/neuralink/cordova/mcardreaderplugin" />
+        <source-file src="src/android/com/neuralink/cordova/mcardreaderplugin/MCardReaderPlugin.java" target-dir="src/com/neuralink/cordova/mcardreaderplugin" />
         <source-file src="src/android/com/neuralink/cordova/mcardreaderplugin/HelpDialog.java" target-dir="src/com/neuralink/cordova/mcardreaderplugin" />
         <source-file src="lib/armeabi/libmsr.so" target-dir="libs" />
     </platform>
