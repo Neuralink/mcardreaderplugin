@@ -1,6 +1,7 @@
 package com.neuralink.cordova.mcardreaderplugin;
 
 import hdx.msr.MagneticStripeReader;
+import hdx.pwm.PWMControl;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -9,6 +10,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.os.SystemClock;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -58,16 +60,15 @@ public class MCardReaderPlugin extends CordovaPlugin {
     		else
     		{
     			String tmp="";
-
     			try {
 					tmp = new String(data,startPos+1,len,"GBK");
 				} catch (UnsupportedEncodingException e) {
 					e.printStackTrace();
+				} finally {
+					//editText.setText(tmp);
+					callback.success(tmp);
 				}
-    			//editText.setText(tmp);
-				callback.success(tmp);
-
-    		}
+    		}	
     	}
     	void ParseData(int size,byte[] data)
     	{
@@ -79,6 +80,12 @@ public class MCardReaderPlugin extends CordovaPlugin {
     		pos += data[pos]+1;
     		ParseOneTrack(pos,data);
 
+			PWMControl.EnableBuzze(1);
+			SystemClock.sleep(100);
+			PWMControl.EnableBuzze(0);
+			PWMControl.EnableBuzze(1);
+			SystemClock.sleep(100);
+			PWMControl.EnableBuzze(0);									
 			//callback.success(data);
 		
 			msr.Close();
